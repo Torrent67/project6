@@ -5,14 +5,22 @@
   </head>
   <body>
 
-  <div class="container">
-    <h1>Find a physician near you.</h1>
-    <label for="symptoms">Enter symptoms</label>
-    <input id="symptoms" type="text">
-    <button class="btn-success" id="dotordisplay">Search City <button>
-    <div class="errors"></div>
-    <div class="showDoctors"></div>
+<div class="container">
+
+  <form class="Search" action="index.html" method="post">
+    <div class="form-group">
+      <h1>Search for physicians in your area.</H1>
+      <label for="symptoms">Input your symptoms</label>
+      <input type="text" id="symptoms" required>
+      </div>
+    <input type="submit" class="btn btn-info" value="Submit Button">
+  </form>
+      <div class="sucess">
+      </div>
+      <div class="fail">
+      </div>
 </div>
+
 
 </body>
 </html>
