@@ -2,26 +2,27 @@ import './styles.css';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {doctorSearch} from './../src/backend.js'
+import {DocSearch} from './../src/backend.js'
+
 
 $(document).ready(function(){
-    $('.Search').submit(function(event){
+    $('.mainP').submit(function(event){
       event.preventDefault();
      let symptom = $('#symptom').val();
      let gender = $('#gender').val();
-     let search = new DoctorSearch;
+     let search = new DocSearch;
      if (!symptom) {
-       alert("Please enter your symtpoms");
+       alert("Please enter your symptoms");
        return;
      }
      $('.error').hide();
      $('.results').show();
      $('.results').text("");
-     let results = search.searchBySymptom(symptom,gender);
+     let results = search.searchGenderSymtoms(symptom,gender);
      results.then (function(response){
        let body = JSON.parse(response);
        if (body.data.length > 0) {
-         $('#docs').text(body.data.length);
+         $('#showResults').text(body.data.length);
          for (let i = 0; i < body.data.length; i++) {
            let patients;
            let name = `${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}`;
@@ -33,12 +34,11 @@ $(document).ready(function(){
              patients = "No";
            }
            $('.results').append(`<div class= 'doc${i}'>${name}<br>`);
-           $('.results').append(`<img src="${pic}">`);
            $('.results').append(`<div class = 'bio'>Phone: ${phone},<br>Address: ${address} <br>Accepting Patients: ${patients} </div></div><hr>`);
          }
        } else {
          $('.error').show();
-       }
+       };
      });
    });
  });
