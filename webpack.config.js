@@ -17,8 +17,7 @@ module.exports = {
   plugins: [
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin
-    new Dotenv()({
+    new HtmlWebpackPlugin({
       title: 'Doctor Locator',
       template: './src/index.html',
       inject: 'body'
