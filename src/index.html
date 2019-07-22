@@ -8,17 +8,24 @@
   <div class="container">
        <form class="mainP" action="index.html" method="post">
          <div class="form-group symptom">
-           <h1>Enter the symptoms you are experiancing.</h1>
+           <h1>Enter the symptoms you are experiencing, Or.</h1>
            <label for="symptoms">Symptoms.</label>
            <input type="text" id='symptoms'>
          </div>
          <br>
+         <div class="form-group docname">
+          <h1>Enter the name of a Doctor you wish to look for.</h1>
+          <label for="docname">Doctor Name..</label>
+          <input type="text" id='docname'>
+        </div>
  </div>
     <input type="submit" class="btn btn-info" value="Submit Button">
   </form>
       <div class="results" id="showResults">
         <h2>Doctor sugestions.</h2>
 </div>
-
+        <div class="error"> 
+          <p> </p>
+        </div>
 </body>
 </html>

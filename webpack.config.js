@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
+const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -16,8 +16,9 @@ module.exports = {
   plugins: [
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(['dist']),
+    new Dotenv(),
     new HtmlWebpackPlugin({
-      title: 'Project Name',      // CHANGE THIS
+      title: 'DoctorSearch',     
       template: './src/index.html',
       inject: 'body'
     })
