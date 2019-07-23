@@ -13,11 +13,13 @@ $(document).ready(function () {
     let search = new DocSearch;
 
 
-
+    if(symptoms === "" && docname === ""){
+    $('#showResults').text("Please enter another symptom or name of a Doctor");
+    }
     let results = search.searchBoth(symptoms, docname);
     results.then(function (response) {
       let body = JSON.parse(response);
-      if (body.data.length > 0) {
+      if (body.data.length > 0) 
         $('#showResults').text(body.data.length);
         for (let i = 0; i < body.data.length; i++) {
 
@@ -37,7 +39,8 @@ $(document).ready(function () {
 
 
         }
-      }
+      
+    
     }, function (error) {
 
       $('.error').append(`There was an error processing your request: ${error.message}`);
