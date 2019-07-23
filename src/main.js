@@ -11,16 +11,16 @@ $(document).ready(function () {
     let symptoms = $('#symptoms').val();
     let docname = $('#docname').val();
     let search = new DocSearch;
-  
-    $('.error').hide();
-    $('.results').show();
-    $('.results').text("");
+
+
+
     let results = search.searchBoth(symptoms, docname);
     results.then(function (response) {
       let body = JSON.parse(response);
       if (body.data.length > 0) {
         $('#showResults').text(body.data.length);
         for (let i = 0; i < body.data.length; i++) {
+
           let newPatients = "";
           let name = `${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}`;
           let phone = body.data[i].practices[0].phones[0].number;
@@ -30,12 +30,18 @@ $(document).ready(function () {
           } else {
             newPatients = "No";
           }
+
+
           $('#showResults').append(`<div class= 'doc${i}'>${name}<br>`);
           $('#showResults').append(`<div class = 'bio'>Phone: ${phone},<br>Address: ${address} <br>Accepting Patients: ${newPatients} </div></div><hr>`);
+
+
         }
-      } else {
-        $('.error').text(`There was an error processing your request ${error.message}`);
       }
+    }, function (error) {
+
+      $('.error').append(`There was an error processing your request: ${error.message}`);
+
     });
   });
 });
